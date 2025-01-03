@@ -18,13 +18,13 @@
 .App.day {
   background: linear-gradient(to bottom, #6ebedd, #dfeefb);
   color: #000;
-  height: 1200px;
+  height: 900px;
 }
 
 .App.night {
   background: linear-gradient(to bottom, #1a1a2e, #314781);
   color: #000000;
-  height: 1600px;
+  height: 900px;
 }
 
 /* Sky Elements (Sun and Moon) */
