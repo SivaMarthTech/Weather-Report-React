@@ -1,0 +1,244 @@
+/* Basic reset */
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* App container */
+.App {
+  text-align: center;
+  position: relative;
+  height: 100vh;
+  transition: background 1s ease, color 1s ease;
+}
+
+/* Day and Night Themes */
+.App.day {
+  background: linear-gradient(to bottom, #6ebedd, #dfeefb);
+  color: #000;
+  height: 700px;
+}
+
+.App.night {
+  background: linear-gradient(to bottom, #1a1a2e, #314781);
+  color: #000000;
+  height: 700px;
+}
+
+/* Sky Elements (Sun and Moon) */
+.sun {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #ffd700, #ffa500);
+  border-radius: 50%;
+  box-shadow: 0 0 20px 5px rgba(255, 165, 0, 0.6),
+              0 0 40px 10px rgba(255, 215, 0, 0.8),
+              0 0 60px 15px rgba(255, 140, 0, 0.5);
+}
+
+.moon {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #f0e68c, #d2c086);
+  border-radius: 50%;
+  box-shadow: 0 0 15px 5px rgba(240, 230, 140, 0.5),
+              0 0 30px 10px rgba(210, 192, 134, 0.7);
+  display: none;
+}
+
+.App.night .moon {
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sun,
+  .moon {
+    top: 5%;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sun,
+  .moon {
+    top: 2%;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .App {
+    height: 100vh;
+    padding: 0 10px;
+  }
+}
+
+/* Extra small devices (less than 360px) */
+@media (max-width: 360px) {
+  .sun,
+  .moon {
+    top: 2%;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Starry Night Sky */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* Behind other elements */
+  pointer-events: none; /* Allows clicks to pass through */
+}
+
+/* Individual stars */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: drift 5s infinite linear, twinkle 2s infinite ease-in-out;
+}
+
+/* Twinkling animation */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Moving animation for stars */
+@keyframes drift {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(200px) translateX(50px);
+  }
+}
+
+/* Toggle Button */
+.toggle-button {
+  position: absolute;
+  top: 5px;
+ left: 10px;
+  z-index: 1; /* Ensure it's above other elements */
+}
+
+.toggle-button button {
+  padding: 10px 20px;
+  background-color: #ffffffd1;
+  border: none;
+  border-radius: 20px;
+  font-size: 10px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+@media (max-width: 360px){
+  .toggle-button {
+    position: absolute;
+    top: 20px;
+   left: 15px;
+    z-index: 1; /* Ensure it's above other elements */
+  }
+}
+@media (max-width: 360px) {
+  .toggle-button button {
+    padding: 7px;
+    background-color: #ffffffd1;
+    border: none;
+    border-radius: 10px;
+    font-size: 10px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+  }
+}
+
+
+.toggle-button button:hover {
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.toggle-button button:focus {
+  outline: none;
+}
+
+/* Header Section */
+header {
+  padding: 20px;
+  background-color: #4e73df;
+  color: white;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+header h2 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* Main Content */
+.container {
+  padding: 20px;
+}
+
+
+/* Rain Effect */
+.rain {
+  position: fixed; /* Use fixed position to keep the rain effect on top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.raindrop {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background: rgba(103, 103, 175, 0.5);
+  animation: fall 2s linear infinite; /* Increased duration for slower fall */
+  opacity: 0.6; /* Slightly transparent for a realistic effect */
+}
+
+/* Falling animation for raindrops */
+@keyframes fall {
+  0% {
+    transform: translateY(-100px); /* Start from above the viewport */
+  }
+  100% {
+    transform: translateY(100vh); /* End at the bottom of the viewport */
+  }
+}
+
